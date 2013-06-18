@@ -2,6 +2,7 @@ Ext.define('PaywithPal.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
     requires: [
+        'PaywithPal.form.EventForm'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -16,6 +17,11 @@ Ext.define('PaywithPal.view.Main', {
                 title: 'Participants',
                 iconCls: 'user',
                 html: 'Participants Screen'
+            },
+            {
+                title: 'Event Form',
+                iconCls: 'user',
+                xtype: 'eventform'
             }
         ]
     }
