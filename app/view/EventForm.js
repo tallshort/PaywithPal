@@ -69,26 +69,20 @@ Ext.define('PaywithPal.view.EventForm', {
                 ]
             }
         ],
-
+        listeners: [{
+            delegate: "#saveBtn",
+            event: "tap",
+            fn: "onSaveButtonTap"
+        }, {
+            delegate: "#homeBtn",
+            event: "tap",
+            fn: "onHomeButtonTap"
+        }, {
+            delegate: "#deleteBtn",
+            event: "tap",
+            fn: "onDeleteButtonTap"
+        }],
         scrollable: 'vertical'
-    },
-
-    initialize: function() {
-        this.on({
-            scope: this,
-            delegate: '#saveBtn',
-            tap: 'onSaveButtonTap'
-        });
-        this.on({
-            scope: this,
-            delegate: '#homeBtn',
-            tap: 'onHomeButtonTap'
-        });
-        this.on({
-            scope: this,
-            delegate: '#deleteBtn',
-            tap: 'onDeleteButtonTap'
-        });
     },
 
     onSaveButtonTap: function () {
