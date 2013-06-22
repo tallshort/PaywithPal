@@ -5,6 +5,7 @@ Ext.define("PaywithPal.view.EventList", {
         loadingText: "Loading Events...",
         emptyText: '<p class="empty-list">No events found.</p>',
         onItemDisclosure: true,
-        itemTpl: '<div class="list-item-title"><b>{[Ext.Date.format(values.date, "Y-m-d")]}</b> {title} {expense}</div>'
+        grouped: true,
+        itemTpl: '<div class="event-list-item"><div class="title">{title}</div><div><small>共{expense}元</small> <small>{[Ext.Date.format(values.date, "m.d")]}</small></div></div>'
     }
 });

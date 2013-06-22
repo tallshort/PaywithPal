@@ -32,7 +32,8 @@ Ext.application({
 
     views: [
         'EventList',
-        'EventListContainer'
+        'EventListContainer',
+        'EventForm'
     ],
 
     controllers: [
@@ -65,7 +66,10 @@ Ext.application({
         var eventListContainer = {
             xtype: "eventlistcontainer"
         };
-        Ext.Viewport.add(eventListContainer);
+        var eventForm = {
+            xtype: "eventform"
+        };
+        Ext.Viewport.add([eventListContainer, eventForm]);
     },
 
     onUpdated: function() {

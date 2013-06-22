@@ -7013,3 +7013,26 @@ body.x-desktop {
   background-image: linear-gradient(top, #bababa, #c7c7c7 10%, #d3d3d3 65%, #d5d5d5);
   color: black;
 }
+
+.x-list .x-list-item-tpl .x-list-disclosure {
+  top: 0.55em;
+  right: 0.2em;
+}
+
+.event-list-item {
+  padding-right: 2em;
+}
+
+.event-list-item .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-list-item small  {
+  color: #666666;
+}
+
+.x-item-selected .event-list-item small {
+  color: #DDD;
+}
