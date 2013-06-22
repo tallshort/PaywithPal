@@ -26,8 +26,17 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
+    models: ["Event"],
+
+    stores: ["EventStore"],
+
     views: [
-        'Main'
+        'EventList',
+        'EventListContainer'
+    ],
+
+    controllers: [
+        "EventController"
     ],
 
     icon: {
@@ -53,7 +62,10 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('PaywithPal.view.Main'));
+        var eventListContainer = {
+            xtype: "eventlistcontainer"
+        };
+        Ext.Viewport.add(eventListContainer);
     },
 
     onUpdated: function() {

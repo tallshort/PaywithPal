@@ -3,8 +3,8 @@ Ext.define('PaywithPal.model.Allocation', {
     config: {
         fields: [
             'id', 
-            { name: 'actualPay', type: 'integer' },
-            { name: 'shouldPay', type: 'integer' } 
+            { name: 'actualPay', type: 'integer', defaultValue: 0 },
+            { name: 'shouldPay', type: 'integer', defaultValue: 0 } 
         ],
         proxy: {
         },

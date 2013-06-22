@@ -24,6 +24,10 @@ Ext.define('PaywithPal.form.EventForm', {
                 name: 'phone',
                 label: 'Phone',
                 required: true 
+            },
+            {
+                xtype: 'button',
+                text: 'Submit'
             }
         ]
     }

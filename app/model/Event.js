@@ -2,13 +2,15 @@ Ext.define('PaywithPal.model.Event', {
     extend: 'Ext.data.Model',
     config: {
         fields: ['id', 
-            { name: 'name', type: 'string', defaultValue: "dinner"}, 
+            { name: 'title', type: 'string', defaultValue: "dinner"}, 
             { name: 'expense', type: 'int', defaultValue: 0 }, 
             { name: 'date', type: 'date' }
         ],
+
         hasMany: { model: 'PaywithPal.model.Allocation', name: 'allocations' },
+
         validations: [{
-            type: 'presence', field: 'name'
+            type: 'presence', field: 'title', message: 'Please enter a title for this event.'
         }, {
             type: 'presence', field: 'expense'            
         }, {
