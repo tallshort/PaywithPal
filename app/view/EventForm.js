@@ -19,7 +19,7 @@ Ext.define('PaywithPal.view.EventForm', {
                         xtype: "button",
                         ui: "action",
                         text: "保存",
-                        id: "saveBtn"
+                        id: "saveEventBtn"
                     }
                 ]
             },
@@ -37,7 +37,6 @@ Ext.define('PaywithPal.view.EventForm', {
                         name: 'expense',
                         label: '费用',
                         minValue: 1,
-                        maxValue: 5000,
                         stepValue: 1,
                         required: true
                     },
@@ -64,13 +63,13 @@ Ext.define('PaywithPal.view.EventForm', {
                         xtype: "button",
                         iconCls: "trash",
                         iconMask: true,
-                        id: "deleteBtn"
+                        id: "deleteEventBtn"
                     }
                 ]
             }
         ],
         listeners: [{
-            delegate: "#saveBtn",
+            delegate: "#saveEventBtn",
             event: "tap",
             fn: "onSaveButtonTap"
         }, {
@@ -78,7 +77,7 @@ Ext.define('PaywithPal.view.EventForm', {
             event: "tap",
             fn: "onHomeButtonTap"
         }, {
-            delegate: "#deleteBtn",
+            delegate: "#deleteEventBtn",
             event: "tap",
             fn: "onDeleteButtonTap"
         }],
