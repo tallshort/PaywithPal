@@ -9,6 +9,11 @@
             eventListContainer: {
                 newEventEvent: "newEvent",
                 editEventEvent: "editEvent"
+            },
+            eventForm: {
+                saveEventEvent: "saveEvent",
+                backToHomeEvent: "backToHome",
+                deleteEventEvent: "deleteEvent"
             }
         },
         routes: {
@@ -56,16 +61,49 @@
         this.activateEventForm(record);
     },
 
-    deleteEvent: function(id) {
-        console.log("deleteEvent: " + id);
+    deleteEvent: function() {
+        console.log("deleteEvent");
+        var that = this;
+        Ext.Msg.confirm('确认', '您确认删除吗?', function(e) {
+           if (e == "yes") {
+                var eventForm = that.getEventForm();
+                var currentEvent = eventForm.getRecord();
+                var eventStore = Ext.getStore("eventStore");
+                eventStore.remove(currentEvent);
+                eventStore.sync();
+                that.activateEventList();
+             }
+         });
     },
 
-    showEvent: function(id) {
-        console.log("showEvent: " + id);
+    saveEvent: function() {
+        console.log("saveEvent");
+        var eventForm = this.getEventForm();
+        var currentEvent = eventForm.getRecord();
+        var newValues = eventForm.getValues();
+        currentEvent.set('title', newValues.title);
+        currentEvent.set('expense', newValues.expense);
+        currentEvent.set('date', newValues.date);
+        if (currentEvent.isValid()) {
+            var eventStore = Ext.getStore("eventStore");
+            if (null == eventStore.findRecord('id', eventStore.data.id)) {
+                eventStore.add(currentEvent);
+            }
+            eventStore.sync();
+            eventStore.sort([{ property: 'date', direction: 'DESC'}]);
+            this.activateEventList();
+        } else {
+            currentEvent.reject();
+            Ext.Msg.alert('Validation', "Please correct the invalid inputs.", Ext.emptyFn);
+        }
     },
 
-    showEvents: function() {
-        console.log("showEvents");
+    activateEventList: function() {
+        Ext.Viewport.animateActiveItem(this.getEventListContainer(), { type: 'slide', direction: 'right' });
+    },
+
+    backToHome: function() {
+        this.activateEventList();
     }
 
 });

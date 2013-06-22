@@ -6,18 +6,20 @@ Ext.define('PaywithPal.view.EventForm', {
             {
                 xtype: "toolbar",
                 docked: "top",
-                title: "Edit Event",
+                title: "编辑活动",
                 items: [
                     {
                         xtype: "button",
                         ui: "back",
-                        text: "Home"
+                        text: "返回",
+                        id: "homeBtn"
                     },
                     { xtype: "spacer" },
                     {
                         xtype: "button",
                         ui: "action",
-                        text: "Save"
+                        text: "保存",
+                        id: "saveBtn"
                     }
                 ]
             },
@@ -27,13 +29,13 @@ Ext.define('PaywithPal.view.EventForm', {
                     {
                         xtype: 'textfield',
                         name: 'title',
-                        label: 'Title',
+                        label: '标题',
                         required: true
                     },
                     {
                         xtype: 'numberfield',
                         name: 'expense',
-                        label: 'Expense',
+                        label: '费用',
                         minValue: 1,
                         maxValue: 5000,
                         stepValue: 1,
@@ -42,7 +44,7 @@ Ext.define('PaywithPal.view.EventForm', {
                    {
                         xtype: 'datepickerfield',
                         name: 'date',
-                        label: 'Date',
+                        label: '日期',
                         dateFormat: 'D d M Y',
                         placeHolder: 'dd/mm/yyyy',
                         picker: {
@@ -56,17 +58,51 @@ Ext.define('PaywithPal.view.EventForm', {
             {
                 xtype: "toolbar",
                 docked: "bottom",
+                layout: { pack: 'right' },
                 items: [
                     {
                         xtype: "button",
                         iconCls: "trash",
                         iconMask: true,
-                        scope: this
+                        id: "deleteBtn"
                     }
                 ]
             }
         ],
 
         scrollable: 'vertical'
+    },
+
+    initialize: function() {
+        this.on({
+            scope: this,
+            delegate: '#saveBtn',
+            tap: 'onSaveButtonTap'
+        });
+        this.on({
+            scope: this,
+            delegate: '#homeBtn',
+            tap: 'onHomeButtonTap'
+        });
+        this.on({
+            scope: this,
+            delegate: '#deleteBtn',
+            tap: 'onDeleteButtonTap'
+        });
+    },
+
+    onSaveButtonTap: function () {
+        console.log("saveEventEvent");
+        this.fireEvent("saveEventEvent", this);
+    },
+
+    onHomeButtonTap: function () {
+        console.log("backToHomeEvent");
+        this.fireEvent("backToHomeEvent", this);
+    },
+
+    onDeleteButtonTap: function () {
+        console.log("deleteEventEvent");
+        this.fireEvent("deleteEventEvent", this);
     }
 });

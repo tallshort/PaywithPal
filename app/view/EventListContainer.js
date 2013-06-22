@@ -8,7 +8,7 @@ Ext.define("PaywithPal.view.EventListContainer", {
 
         var newButton = {
             xtype: "button",
-            text: 'New',
+            text: '新建',
             ui: 'action',
             handler: this.onNewButtonTap,
             scope: this
@@ -16,7 +16,7 @@ Ext.define("PaywithPal.view.EventListContainer", {
 
         var topToolbar = {
             xtype: "toolbar",
-            title: 'Event List',
+            title: '活动列表',
             docked: "top",
             layout: { pack: 'right' },
             items: [
