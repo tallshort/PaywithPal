@@ -1,6 +1,11 @@
 Ext.define('PaywithPal.view.EventForm', {
     extend: 'Ext.form.Panel',
     xtype: 'eventform',
+    requires: [
+        'Ext.form.FieldSet',
+        'Ext.field.Number',
+        'Ext.field.DatePicker'
+    ],
     config: {
         items: [
             {

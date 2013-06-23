@@ -2,7 +2,8 @@ Ext.define('PaywithPal.store.EventStore', {
     extend: 'Ext.data.Store',
     xtype: 'eventstore',
     requires: [
-        'PaywithPal.model.Event'
+        'PaywithPal.model.Event',
+        'Ext.data.proxy.LocalStorage'
     ],
     config: {
         model: 'PaywithPal.model.Event',
