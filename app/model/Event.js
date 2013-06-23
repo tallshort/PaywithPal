@@ -7,6 +7,11 @@ Ext.define('PaywithPal.model.Event', {
             { name: 'date', type: 'date' }
         ],
 
+        idProperty: 'id',
+        identifier: {
+            type: 'uuid'
+        },
+
         hasMany: { model: 'PaywithPal.model.Allocation', name: 'allocations' },
 
         validations: [{

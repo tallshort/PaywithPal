@@ -6,6 +6,12 @@ Ext.define('PaywithPal.model.Allocation', {
             { name: 'actualPay', type: 'integer', defaultValue: 0 },
             { name: 'shouldPay', type: 'integer', defaultValue: 0 } 
         ],
+
+        idProperty: 'id',
+        identifier: {
+            type: 'uuid'
+        },
+        
         proxy: {
         },
         belongsTo: { model: 'PaywithPal.model.Partcipant', name: 'owner' }

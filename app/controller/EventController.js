@@ -34,20 +34,10 @@
 
     newEvent: function() {
         console.log("newEvent");
-        var now = new Date();
         var newEvent = Ext.create("PaywithPal.model.Event", {
-            id: this.generateEventId(now),
-            date: now
+            date: new Date()
         });
         this.activateEventForm(newEvent);
-    },
-
-    generateEventId: function(now) {
-        return now.getTime() + this.getRandomInt(0, 100);
-    },
-
-    getRandomInt: function(min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
     },
 
     activateEventForm: function (record) {

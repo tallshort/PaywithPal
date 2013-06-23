@@ -6,6 +6,12 @@ Ext.define('PaywithPal.model.Participant', {
              { name: 'email', type: 'string' }, 
              { name: 'phone', type: 'string' }
         ],
+
+        idProperty: 'id',
+        identifier: {
+            type: 'uuid'
+        },
+        
         proxy: {
         },
         hasMany: { model: 'PaywithPal.model.Allocation', name: 'allocations' }
