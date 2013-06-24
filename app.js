@@ -31,13 +31,18 @@ Ext.application({
     stores: ["EventStore", "ParticipantStore"],
 
     views: [
+        'Main',
         'EventList',
         'EventListContainer',
-        'EventForm'
+        'EventForm',
+        'ParticipantList',
+        'ParticipantListContainer',
+        'ParticipantForm'
     ],
 
     controllers: [
-        "EventController"
+        "EventController",
+        "ParticipantController"
     ],
 
     icon: {
@@ -63,13 +68,16 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        var eventListContainer = {
-            xtype: "eventlistcontainer"
+        var main = {
+            xtype: "main"
         };
         var eventForm = {
             xtype: "eventform"
         };
-        Ext.Viewport.add([eventListContainer, eventForm]);
+        var participantForm = {
+            xtype: "participantform"
+        };
+        Ext.Viewport.add([main, eventForm, participantForm]);
     },
 
     onUpdated: function() {

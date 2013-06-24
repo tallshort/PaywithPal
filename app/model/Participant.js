@@ -11,9 +11,15 @@ Ext.define('PaywithPal.model.Participant', {
         identifier: {
             type: 'uuid'
         },
-        
-        proxy: {
-        },
+
+        validations: [{
+            type: 'presence', field: 'name'
+        }, {
+            type: 'presence', field: 'email'            
+        }, {
+            type: 'presence', field: 'phone'            
+        }],
+
         hasMany: { model: 'PaywithPal.model.Allocation', name: 'allocations' }
     }
 

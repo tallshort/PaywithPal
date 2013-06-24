@@ -3,7 +3,8 @@
     config: {
         refs: {
             eventListContainer: "eventlistcontainer",
-            eventForm: "eventform"
+            eventForm: "eventform",
+            main: "main"
         }, 
         control: {
             eventListContainer: {
@@ -84,12 +85,12 @@
             this.activateEventList();
         } else {
             currentEvent.reject();
-            Ext.Msg.alert('Validation', "Please correct the invalid inputs.", Ext.emptyFn);
+            Ext.Msg.alert('Validation', "输入有非法值，请更正。", Ext.emptyFn);
         }
     },
 
     activateEventList: function() {
-        Ext.Viewport.animateActiveItem(this.getEventListContainer(), { type: 'slide', direction: 'right' });
+        Ext.Viewport.animateActiveItem(this.getMain(), { type: 'slide', direction: 'right' });
     },
 
     backToHome: function() {
