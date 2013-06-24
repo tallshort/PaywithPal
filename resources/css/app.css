@@ -7019,20 +7019,20 @@ body.x-desktop {
   right: 0.2em;
 }
 
-.event-list-item {
+.list-item {
   padding-right: 2em;
 }
 
-.event-list-item .title {
+.list-item .title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.event-list-item small  {
+.list-item small  {
   color: #666666;
 }
 
-.x-item-selected .event-list-item small {
+.x-item-selected .list-item small {
   color: #DDD;
 }
