@@ -42,7 +42,8 @@ Ext.application({
 
     controllers: [
         "EventController",
-        "ParticipantController"
+        "ParticipantController",
+        "AllocationController"
     ],
 
     icon: {

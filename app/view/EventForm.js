@@ -4,7 +4,8 @@ Ext.define('PaywithPal.view.EventForm', {
     requires: [
         'Ext.form.FieldSet',
         'Ext.field.Number',
-        'Ext.field.DatePicker'
+        'Ext.field.DatePicker',
+        'Ext.field.Select'
     ],
     config: {
         items: [
@@ -30,6 +31,7 @@ Ext.define('PaywithPal.view.EventForm', {
             },
             { 
                 xtype: "fieldset",
+                title: "基本信息",
                 items: [
                     {
                         xtype: 'textfield',
@@ -60,6 +62,42 @@ Ext.define('PaywithPal.view.EventForm', {
                 ]
             },
             {
+                xtype: "container",
+                margin: "0.5em",
+                layout: {
+                    type: 'hbox',
+                    align: 'stretch'
+                },
+                items: [
+                    {
+                        xtype: "selectfield",
+                        store: "participantStore", 
+                        displayField: "name", 
+                        valueField: "id",
+                        flex: 3,
+                    },
+                    {
+                        xtype: "numberfield",
+                        flex: 1,
+                        margin: "0 0.5em",
+                        placeHolder: "分担金额",
+                        minValue: 0,
+                        value: 0
+                    },
+                    {
+                        xtype: "button",
+                        flex: 1,
+                        text: "删除"
+                    }
+                ]
+            },
+            {
+                xtype: "button",
+                text: "添加参与者",
+                width: "30%",
+                id: "addAllocationBtn"
+            },
+            {
                 xtype: "toolbar",
                 docked: "bottom",
                 layout: { pack: 'right' },
@@ -85,22 +123,31 @@ Ext.define('PaywithPal.view.EventForm', {
             delegate: "#deleteEventBtn",
             event: "tap",
             fn: "onDeleteButtonTap"
+        }, {
+            delegate: "#addAllocationBtn",
+            event: "tap",
+            fn: "onAddAllocationButtonTap"
         }],
         scrollable: 'vertical'
     },
 
-    onSaveButtonTap: function () {
+    onSaveButtonTap: function() {
         console.log("saveEventEvent");
         this.fireEvent("saveEventEvent", this);
     },
 
-    onHomeButtonTap: function () {
+    onHomeButtonTap: function() {
         console.log("backToHomeEvent");
         this.fireEvent("backToHomeEvent", this);
     },
 
-    onDeleteButtonTap: function () {
+    onDeleteButtonTap: function() {
         console.log("deleteEventEvent");
         this.fireEvent("deleteEventEvent", this);
+    },
+
+    onAddAllocationButtonTap: function() {
+        console.log("addAllocationEvent");
+        this.fireEvent("addAllocationEvent", this);
     }
 });
