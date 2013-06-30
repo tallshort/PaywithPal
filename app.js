@@ -28,7 +28,7 @@ Ext.application({
 
     models: ["Event", "Participant"],
 
-    stores: ["EventStore", "ParticipantStore"],
+    stores: ["EventStore", "ParticipantStore", "AllocationStore"],
 
     views: [
         'Main',
@@ -37,7 +37,8 @@ Ext.application({
         'EventForm',
         'ParticipantList',
         'ParticipantListContainer',
-        'ParticipantForm'
+        'ParticipantForm',
+        'AllocationFormItem'
     ],
 
     controllers: [

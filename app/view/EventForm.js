@@ -4,8 +4,8 @@ Ext.define('PaywithPal.view.EventForm', {
     requires: [
         'Ext.form.FieldSet',
         'Ext.field.Number',
-        'Ext.field.DatePicker',
-        'Ext.field.Select'
+        'Ext.Label',
+        'Ext.field.DatePicker'
     ],
     config: {
         items: [
@@ -62,46 +62,27 @@ Ext.define('PaywithPal.view.EventForm', {
                 ]
             },
             {
-                xtype: "container",
-                margin: "0.5em",
-                layout: {
-                    type: 'hbox',
-                    align: 'stretch'
-                },
-                items: [
-                    {
-                        xtype: "selectfield",
-                        store: "participantStore", 
-                        displayField: "name", 
-                        valueField: "id",
-                        flex: 3,
-                    },
-                    {
-                        xtype: "numberfield",
-                        flex: 1,
-                        margin: "0 0.5em",
-                        placeHolder: "分担金额",
-                        minValue: 0,
-                        value: 0
-                    },
-                    {
-                        xtype: "button",
-                        flex: 1,
-                        text: "删除"
-                    }
-                ]
+                xtype: 'label',
+                html: "参与者",
+                margin: "0 1.2em"
             },
             {
-                xtype: "button",
-                text: "添加参与者",
-                width: "30%",
-                id: "addAllocationBtn"
+                xtype: "panel",
+                id: "allocationPanel"
             },
             {
                 xtype: "toolbar",
                 docked: "bottom",
-                layout: { pack: 'right' },
                 items: [
+                    {
+                        xtype: "button",
+                        text: "添加参与者",
+                        width: "30%",
+                        id: "addAllocationBtn"
+                    },
+                    {
+                        xtype: "spacer"
+                    },
                     {
                         xtype: "button",
                         iconCls: "trash",
@@ -147,7 +128,12 @@ Ext.define('PaywithPal.view.EventForm', {
     },
 
     onAddAllocationButtonTap: function() {
-        console.log("addAllocationEvent");
-        this.fireEvent("addAllocationEvent", this);
+        var allocationPanel = Ext.getCmp("allocationPanel");
+        allocationPanel.add({xtype: "allocationformitem"});
+    },
+
+    clearAllocations: function() {
+        var allocationPanel = Ext.getCmp("allocationPanel");
+        allocationPanel.removeAll(true, true);
     }
 });

@@ -5,9 +5,7 @@
             eventForm: "eventform"
         }, 
         control: {
-            eventForm: {
-                addAllocationEvent: "addAllocation"
-            }
+            
         }
     },
 
@@ -19,10 +17,6 @@
     launch: function() {
         this.callParent();
         console.log("launch allocation controller");
-    },
-
-    addAllocation: function() {
-        console.log("addAllocation");
     }
 
 });

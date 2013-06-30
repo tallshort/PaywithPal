@@ -44,6 +44,7 @@
     activateEventForm: function (record) {
         var eventForm = this.getEventForm();
         eventForm.setRecord(record);
+        eventForm.clearAllocations();
         Ext.Viewport.animateActiveItem(eventForm, { type: 'slide', direction: 'left' });
     },
 
@@ -81,7 +82,19 @@
                 eventStore.add(currentEvent);
             }
             eventStore.sync();
-            eventStore.sort([{ property: 'date', direction: 'DESC'}]);
+            // Save allocations
+            var participantIds = newValues["participantId[]"];
+            var actualPays = newValues["actualPay[]"];
+            var allocationStore = Ext.getStore("allocationStore");
+            Ext.Array.each(participantIds, function(value, index) {
+                allocationStore.add(Ext.create("PaywithPal.model.Allocation", {
+                    participantId: value,
+                    eventId: currentEvent.get('id'),
+                    actualPay: actualPays[index]
+                }));
+            });
+            allocationStore.sync();
+
             this.activateEventList();
         } else {
             currentEvent.reject();
