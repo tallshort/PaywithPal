@@ -34,13 +34,23 @@ Ext.define('PaywithPal.view.AllocationFormItem', {
             {
                 xtype: "button",
                 flex: 1,
-                text: "删除"
+                text: "删除",
+                itemId: "deleteAllocationBtn"
             }
-        ]
+        ],
+        listeners: [{
+            delegate: "#deleteAllocationBtn",
+            event: "tap",
+            fn: "onDeleteAllocationButtonTap"
+        }]
     },
 
     setAllocation: function(participantId, actualPay) {
         this.getComponent("participantSelectField").setValue(participantId);
         this.getComponent("actualPayField").setValue(actualPay);
+    },
+
+    onDeleteAllocationButtonTap: function() {
+        this.getParent().remove(this, true);
     }
 });
