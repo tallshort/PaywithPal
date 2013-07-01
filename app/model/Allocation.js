@@ -6,7 +6,7 @@ Ext.define('PaywithPal.model.Allocation', {
             { name: 'actualPay', type: 'integer', defaultValue: 0 },
             { name: 'shouldPay', type: 'integer', defaultValue: 0 },
             { name: 'eventId' },
-            { name: 'partcipantId' }
+            { name: 'participantId' }
         ],
 
         idProperty: 'id',
@@ -14,7 +14,7 @@ Ext.define('PaywithPal.model.Allocation', {
             type: 'uuid'
         },
         belongsTo: { model: 'PaywithPal.model.Event', name: 'event', foreignKey: 'eventId' },
-        belongsTo: { model: 'PaywithPal.model.Partcipant', name: 'owner', foreignKey: 'partcipantId' }
+        belongsTo: { model: 'PaywithPal.model.Partcipant', name: 'owner', foreignKey: 'participantId' }
     },
 
     addShouldPay: function(amount) {

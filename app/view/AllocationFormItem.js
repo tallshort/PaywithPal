@@ -18,6 +18,7 @@ Ext.define('PaywithPal.view.AllocationFormItem', {
                 displayField: "name", 
                 valueField: "id",
                 name: "participantId[]",
+                itemId: "participantSelectField",
                 flex: 3,
             },
             {
@@ -27,7 +28,8 @@ Ext.define('PaywithPal.view.AllocationFormItem', {
                 placeHolder: "分担金额",
                 minValue: 0,
                 value: 0,
-                name: "actualPay[]"
+                name: "actualPay[]",
+                itemId: "actualPayField"
             },
             {
                 xtype: "button",
@@ -35,5 +37,10 @@ Ext.define('PaywithPal.view.AllocationFormItem', {
                 text: "删除"
             }
         ]
+    },
+
+    setAllocation: function(participantId, actualPay) {
+        this.getComponent("participantSelectField").setValue(participantId);
+        this.getComponent("actualPayField").setValue(actualPay);
     }
 });

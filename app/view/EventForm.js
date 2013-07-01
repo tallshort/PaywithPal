@@ -68,7 +68,7 @@ Ext.define('PaywithPal.view.EventForm', {
             },
             {
                 xtype: "panel",
-                id: "allocationPanel"
+                itemId: "allocationPanel"
             },
             {
                 xtype: "toolbar",
@@ -127,13 +127,21 @@ Ext.define('PaywithPal.view.EventForm', {
         this.fireEvent("deleteEventEvent", this);
     },
 
+    getAllocationPanel: function() {
+        return this.getComponent("allocationPanel");
+    },
+
     onAddAllocationButtonTap: function() {
-        var allocationPanel = Ext.getCmp("allocationPanel");
-        allocationPanel.add({xtype: "allocationformitem"});
+        this.getAllocationPanel().add({xtype: "allocationformitem"});
     },
 
     clearAllocations: function() {
-        var allocationPanel = Ext.getCmp("allocationPanel");
-        allocationPanel.removeAll(true, true);
+        this.getAllocationPanel().removeAll(true, true);
+    },
+
+    addAllocationFormItem: function(partcipantId, actualPay) {
+        var allocationFormItem = Ext.create("PaywithPal.view.AllocationFormItem");
+        allocationFormItem.setAllocation(partcipantId, actualPay);
+        this.getAllocationPanel().add(allocationFormItem);
     }
 });

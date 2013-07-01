@@ -41,10 +41,16 @@
         this.activateEventForm(newEvent);
     },
 
-    activateEventForm: function (record) {
+    activateEventForm: function (eventRecord) {
         var eventForm = this.getEventForm();
-        eventForm.setRecord(record);
+        eventForm.setRecord(eventRecord);
         eventForm.clearAllocations();
+        allocations = Ext.getStore("allocationStore").queryBy(function(allocationRecord) {
+            return allocationRecord.get("eventId") == eventRecord.get("id");
+        });
+        allocations.each(function(allocation) {
+            eventForm.addAllocationFormItem(allocation.get("participantId"), allocation.get("actualPay"));
+        });
         Ext.Viewport.animateActiveItem(eventForm, { type: 'slide', direction: 'left' });
     },
 
@@ -78,14 +84,21 @@
         currentEvent.set('date', newValues.date);
         if (currentEvent.isValid()) {
             var eventStore = Ext.getStore("eventStore");
-            if (null == eventStore.findRecord('id', eventStore.data.id)) {
+            if (null == eventStore.getById(currentEvent.get("id"))) {
                 eventStore.add(currentEvent);
             }
             eventStore.sync();
-            // Save allocations
+            
+            // Remove old allocations
+            var allocationStore = Ext.getStore("allocationStore");
+            var oldAllocations = Ext.getStore("allocationStore").queryBy(function(allocationRecord) {
+                return allocationRecord.get("eventId") == currentEvent.get("id");
+            });
+            allocationStore.remove(oldAllocations.items);
+
+            // Save new allocations
             var participantIds = newValues["participantId[]"];
             var actualPays = newValues["actualPay[]"];
-            var allocationStore = Ext.getStore("allocationStore");
             Ext.Array.each(participantIds, function(value, index) {
                 allocationStore.add(Ext.create("PaywithPal.model.Allocation", {
                     participantId: value,
