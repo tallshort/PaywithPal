@@ -6,12 +6,12 @@ Ext.define('PaywithPal.view.Main', {
         fullscreen: true,
         items: [
             {
-                title: 'Events',
+                title: '饭局',
                 iconCls: 'home',
                 xtype: 'eventlistcontainer'
             },
             {
-                title: 'Participants',
+                title: '饭友',
                 iconCls: 'user',
                 xtype: 'participantlistcontainer'
             }

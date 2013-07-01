@@ -9,7 +9,7 @@ Ext.define("PaywithPal.view.EventListContainer", {
         items: [
             {
                 xtype: "toolbar",
-                title: '活动列表',
+                title: '饭局一览',
                 docked: "top",
                 layout: { pack: 'right' },
                 items: [

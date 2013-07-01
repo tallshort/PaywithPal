@@ -2,8 +2,8 @@ Ext.define('PaywithPal.model.Event', {
     extend: 'Ext.data.Model',
     config: {
         fields: ['id', 
-            { name: 'title', type: 'string', defaultValue: "dinner"}, 
-            { name: 'expense', type: 'int', defaultValue: 0 }, 
+            { name: 'title', type: 'string', defaultValue: "晚饭"}, 
+            { name: 'expense', type: 'int', defaultValue: 10 }, 
             { name: 'date', type: 'date' }
         ],
 

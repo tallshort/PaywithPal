@@ -12,7 +12,7 @@ Ext.define('PaywithPal.view.EventForm', {
             {
                 xtype: "toolbar",
                 docked: "top",
-                title: "编辑活动",
+                title: "编辑饭局",
                 items: [
                     {
                         xtype: "button",
@@ -36,13 +36,13 @@ Ext.define('PaywithPal.view.EventForm', {
                     {
                         xtype: 'textfield',
                         name: 'title',
-                        label: '标题',
+                        label: '主题',
                         required: true
                     },
                     {
                         xtype: 'numberfield',
                         name: 'expense',
-                        label: '费用',
+                        label: '消费',
                         minValue: 1,
                         stepValue: 1,
                         required: true
@@ -63,7 +63,7 @@ Ext.define('PaywithPal.view.EventForm', {
             },
             {
                 xtype: 'label',
-                html: "参与者",
+                html: "一起败的饭友们",
                 margin: "0 1.2em"
             },
             {
@@ -76,7 +76,7 @@ Ext.define('PaywithPal.view.EventForm', {
                 items: [
                     {
                         xtype: "button",
-                        text: "添加参与者",
+                        text: "添加饭友",
                         width: "30%",
                         id: "addAllocationBtn"
                     },

@@ -9,7 +9,7 @@ Ext.define("PaywithPal.view.ParticipantListContainer", {
         items: [
             {
                 xtype: "toolbar",
-                title: '参与者列表',
+                title: '饭友一览',
                 docked: "top",
                 layout: { pack: 'right' },
                 items: [

@@ -10,7 +10,7 @@ Ext.define('PaywithPal.view.ParticipantForm', {
             {
                 xtype: "toolbar",
                 docked: "top",
-                title: "编辑活动",
+                title: "编辑饭友",
                 items: [
                     {
                         xtype: "button",

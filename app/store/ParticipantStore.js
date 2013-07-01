@@ -7,12 +7,12 @@ Ext.define('PaywithPal.store.ParticipantStore', {
     config: {
         model: 'PaywithPal.model.Participant',
         storeId: 'participantStore',
-        data: [
-            {id: 1, name: "Jian Zhang", email: "tallshort@gmail.com", phone: "13810820375"},
-            {id: 2, name: "Jian Zhang 2", email: "tallshort@gmail.com", phone: "13810820375"},
-            {id: 3, name: "Jian Zhang 3", email: "tallshort@gmail.com", phone: "13810820375"},
-            {id: 4, name: "Jian Zhang 4", email: "tallshort@gmail.com", phone: "13810820375"}
-        ],
+        autoLoad: true,
+        autoSync: true,
+        proxy: {
+            type: 'localstorage',
+            id: 'participants-local-storage'
+        },
         sorters: [{ property: 'name', direction: 'DESC'}]
     }
 });
