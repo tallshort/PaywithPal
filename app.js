@@ -26,7 +26,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
 
-    models: ["Event", "Participant"],
+    models: ["Event", "Allocation", "Participant"],
 
     stores: ["EventStore", "ParticipantStore", "AllocationStore"],
 

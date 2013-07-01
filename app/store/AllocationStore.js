@@ -8,6 +8,8 @@ Ext.define('PaywithPal.store.AllocationStore', {
     config: {
         model: 'PaywithPal.model.Allocation',
         storeId: 'allocationStore',
+        autoLoad: true,
+        autoSync: true,
         proxy: {
             type: 'localstorage',
             id: 'allocations-local-storage'

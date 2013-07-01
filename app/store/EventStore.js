@@ -8,6 +8,8 @@ Ext.define('PaywithPal.store.EventStore', {
     config: {
         model: 'PaywithPal.model.Event',
         storeId: 'eventStore',
+        autoLoad: true,
+        autoSync: true,
         proxy: {
             type: 'localstorage',
             id: 'events-local-storage'
